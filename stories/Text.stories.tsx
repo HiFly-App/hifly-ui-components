@@ -1,27 +1,44 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type {Meta, StoryObj} from '@storybook/react';
 
-import { Text, TextProps } from "../src";
+import {getDefaultTheme, Text} from '../src';
+import {TextProps} from '../src/components/text/types';
+import {ThemeProvider} from '@emotion/react';
+import React from 'react';
 
 const meta: Meta<TextProps> = {
-  title: "HiFly/Atomics",
+  title: 'HiFly/Atomics',
   component: Text,
-  parameters: {
-    docs: { iframeHeight: 600, previewSource: "open" },
+  args: {
+    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
   },
+  parameters: {
+    docs: {iframeHeight: 600, previewSource: 'open'},
+  },
+  decorators: [
+    Story => (
+      <ThemeProvider theme={getDefaultTheme('light')}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default meta;
 
 type Story = StoryObj<TextProps>;
 
-export const DefaultText: Story = {
+export const VariantText: Story = {
   args: {
-    label: "Hello World",
+    variant: 'display',
+    size: 'sm',
+    weight: 'regular',
   },
 };
 
-export const NormalText: Story = {
+export const VariantDisplay: Story = {
   args: {
-    label: "NormalText",
+    variant: 'display',
+    size: '2xl',
+    weight: 'regular',
   },
 };

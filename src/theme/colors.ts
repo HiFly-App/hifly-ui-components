@@ -1,0 +1,95 @@
+import {ThemeMode} from './defaultTheme';
+
+const baseColors = {
+  white: '#FFFFFF',
+  black: '#000000',
+  transparant: 'rgba(0,0,0,0)',
+
+  brand25: '#FCFAFF',
+  brand50: '#F9F5FF',
+  brand100: '#F4EBFF',
+  brand200: '#E9D7FE',
+  brand300: '#D6BBFB',
+  brand400: '#B692F6',
+  brand500: '#9E77ED',
+  brand600: '#7F56D9',
+  brand700: '#6941C6',
+  brand800: '#53389E',
+  brand900: '#42307D',
+  brand950: '#2C1C5F',
+
+  error25: '#FFFBFA',
+  error50: '#FEF3F2',
+  error100: '#FEE4E2',
+  error200: '#FECDCA',
+  error300: '#FDA29B',
+  error400: '#F97066',
+  error500: '#F04438',
+  error600: '#D92D20',
+  error700: '#B42318',
+  error800: '#912018',
+  error900: '#7A271A',
+  error950: '#55160C',
+
+  warning25: '#FFFCF5',
+  warning50: '#FFFAEB',
+  warning100: '#FEF0C7',
+  warning200: '#FEDF89',
+  warning300: '#FEC84B',
+  warning400: '#FDB022',
+  warning500: '#F79009',
+  warning600: '#DC6803',
+  warning700: '#B54708',
+  warning800: '#93370D',
+  warning900: '#7A2E0E',
+  warning950: '#4E1D09',
+
+  success25: '#F6FEF9',
+  success50: '#ECFDF3',
+  success100: '#DCFAE6',
+  success200: '#ABEFC6',
+  success300: '#75E0A7',
+  success400: '#47CD89',
+  success500: '#17B26A',
+  success600: '#079455',
+  success700: '#067647',
+  success800: '#085D3A',
+  success900: '#074D31',
+  success950: '#053321',
+};
+const colorsLightMode = {
+  gray25: '#FCFCFD',
+  gray50: '#F9FAFB',
+  gray100: '#F2F4F7',
+  gray200: '#E4E7EC',
+  gray300: '#D0D5DD',
+  gray400: '#98A2B3',
+  gray500: '#667085',
+  gray600: '#475467',
+  gray700: '#344054',
+  gray800: '#182230',
+  gray900: '#101828',
+  gray950: '#0C111D',
+};
+
+const colorsDarkMode = {
+  gray25: '#FAFAFA',
+  gray50: '#F5F5F6',
+  gray100: '#F0F1F1',
+  gray200: '#ECECED',
+  gray300: '#CECFD2',
+  gray400: '#94969C',
+  gray500: '#85888E',
+  gray600: '#61646C',
+  gray700: '#333741',
+  gray800: '#1F242F',
+  gray900: '#161B26',
+  gray950: '#0C111D',
+};
+
+export const getColors = (mode: ThemeMode) => {
+  return {
+    ...baseColors,
+    ...(mode === 'light' ? colorsLightMode : colorsDarkMode),
+  };
+};
