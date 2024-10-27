@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import React from 'react';
-import {TextProps} from './types';
+import {TextProps, TextVariant} from './types';
 import {TextDefinition, TextWeightDeclartion} from './TextDefinition';
 
 export const Text = ({
@@ -17,10 +17,11 @@ export const Text = ({
   return (
     <StyledText
       textSize={`${textDefinition.fontSize}px`}
-      lineHeight={`${textDefinition.lineHeight}`}
+      lineHeight={`${textDefinition.lineHeight}px`}
       align={align}
       weight={textWeight}
       color={color}
+      variant={variant}
       {...rest}>
       {children}
     </StyledText>
@@ -33,10 +34,12 @@ const StyledText = styled.Text<{
   weight?: string;
   color?: string;
   align: string;
+  variant: TextVariant;
 }>`
   font-size: ${({textSize}) => textSize};
   line-height: ${({lineHeight}) => lineHeight};
   font-weight: ${({weight}) => weight};
   color: ${({color, theme}) => color ?? theme.colors.gray900};
   text-align: ${({align}) => align};
+  font-family: ${({theme, variant}) => (variant === 'text' ? 'Inter' : 'IBM Plex Sans')};
 `;

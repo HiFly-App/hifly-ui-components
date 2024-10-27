@@ -4,6 +4,7 @@ import {getDefaultTheme, Text} from '../src';
 import {TextProps} from '../src/components/text/types';
 import {ThemeProvider} from '@emotion/react';
 import React from 'react';
+import {View} from 'react-native';
 
 const meta: Meta<TextProps> = {
   title: 'HiFly/Atomics',
@@ -14,10 +15,13 @@ const meta: Meta<TextProps> = {
   parameters: {
     docs: {iframeHeight: 600, previewSource: 'open'},
   },
+
   decorators: [
     Story => (
       <ThemeProvider theme={getDefaultTheme('light')}>
-        <Story />
+        <View style={{flex: 1}}>
+          <Story />
+        </View>
       </ThemeProvider>
     ),
   ],
@@ -29,7 +33,7 @@ type Story = StoryObj<TextProps>;
 
 export const VariantText: Story = {
   args: {
-    variant: 'display',
+    variant: 'text',
     size: 'sm',
     weight: 'regular',
   },
