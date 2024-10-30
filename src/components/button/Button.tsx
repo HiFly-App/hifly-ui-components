@@ -4,7 +4,7 @@ import {ButtonProps, ButtonVariants} from './types';
 import {useTheme} from '@emotion/react';
 import {GetButtonColorDefinition, ButtonSizeDefinition} from './ButtonDefinition';
 
-export const Button = ({label, variant, size = 'sm', state = 'default', overideStyles}: ButtonProps) => {
+export const Button = ({label, variant, size = 'sm', state = 'default', overideStyles, ...rest}: ButtonProps) => {
   const {colors} = useTheme();
   const {height, fontSize, lineHeight, padding} = ButtonSizeDefinition[size];
 
@@ -18,7 +18,8 @@ export const Button = ({label, variant, size = 'sm', state = 'default', overideS
       padding={padding}
       backgroundColor={overideStyles?.backgroundColor ?? backgroundColor}
       border={overideStyles?.border ?? border}
-      color={overideStyles?.color ?? color}>
+      color={overideStyles?.color ?? color}
+      {...rest}>
       {label}
     </StyledButton>
   );
