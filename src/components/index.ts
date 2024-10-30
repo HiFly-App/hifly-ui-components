@@ -1,1 +1,2 @@
-export * from "./text/Text";
+export * from './text';
+export * from './button';

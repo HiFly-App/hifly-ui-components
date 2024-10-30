@@ -1,13 +1,13 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {getDefaultTheme, Text} from '../src';
-import {TextProps} from '../src/components/text/types';
+import {getDefaultTheme, Text} from '../../src';
+import {TextProps} from '../../src/components/text/types';
 import {ThemeProvider} from '@emotion/react';
 import React from 'react';
 import {View} from 'react-native';
 
 const meta: Meta<TextProps> = {
-  title: 'HiFly/Atomics',
+  title: 'HiFly/Atomics/Text/Dark',
   component: Text,
   args: {
     children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -18,8 +18,8 @@ const meta: Meta<TextProps> = {
 
   decorators: [
     Story => (
-      <ThemeProvider theme={getDefaultTheme('light')}>
-        <View style={{flex: 1}}>
+      <ThemeProvider theme={getDefaultTheme('dark')}>
+        <View style={{flex: 1, backgroundColor: getDefaultTheme('dark').colors.background.primary}}>
           <Story />
         </View>
       </ThemeProvider>

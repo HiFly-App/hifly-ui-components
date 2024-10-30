@@ -1,2 +1,3 @@
 export * from './components';
-export * from './theme/defaultTheme';
+export * from './theme';
+export * from './types';

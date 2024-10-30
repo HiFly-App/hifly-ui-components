@@ -1,4 +1,5 @@
 import {type TextProps as NativeTextProps} from 'react-native';
+import {TextColors} from '../../theme/types';
 
 export type TextVariant = 'display' | 'text';
 export type TextSize = '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
@@ -9,8 +10,8 @@ export type TextProps = {
   variant: TextVariant;
   size?: TextSize;
   weight?: TextWeight;
-  color?: string;
   align?: TextAlignment;
+  overideColor?: string;
 } & NativeTextProps;
 
 export type TextDefinitionType = {

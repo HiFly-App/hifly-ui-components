@@ -2,26 +2,28 @@ import styled from '@emotion/native';
 import React from 'react';
 import {TextProps, TextVariant} from './types';
 import {TextDefinition, TextWeightDeclartion} from './TextDefinition';
+import {TextColors} from '../../theme';
 
 export const Text = ({
   variant,
   size = 'sm',
   weight = 'regular',
-  color,
   align = 'left',
+  overideColor,
   children,
   ...rest
 }: TextProps) => {
   const textDefinition = TextDefinition[variant][size];
   const textWeight = TextWeightDeclartion[weight];
+
   return (
     <StyledText
-      textSize={`${textDefinition.fontSize}px`}
+      size={`${textDefinition.fontSize}px`}
       lineHeight={`${textDefinition.lineHeight}px`}
       align={align}
       weight={textWeight}
-      color={color}
       variant={variant}
+      overideColor={overideColor}
       {...rest}>
       {children}
     </StyledText>
@@ -29,17 +31,19 @@ export const Text = ({
 };
 
 const StyledText = styled.Text<{
-  textSize: string;
+  size: string;
   lineHeight: string;
-  weight?: string;
-  color?: string;
+  weight: string;
   align: string;
   variant: TextVariant;
-}>`
-  font-size: ${({textSize}) => textSize};
-  line-height: ${({lineHeight}) => lineHeight};
-  font-weight: ${({weight}) => weight};
-  color: ${({color, theme}) => color ?? theme.colors.gray900};
-  text-align: ${({align}) => align};
-  font-family: ${({theme, variant}) => (variant === 'text' ? 'Inter' : 'IBM Plex Sans')};
-`;
+  overideColor?: string;
+}>(
+  ({size, lineHeight, weight, align, variant, overideColor, theme}) => `
+  font-size: ${size};
+  line-height: ${lineHeight};
+  font-weight: ${weight};
+  color: ${overideColor ? overideColor : theme.colors.text.primary};
+  text-align: ${align};
+  font-family: ${variant === 'text' ? 'Inter' : 'IBM Plex Sans'};
+`,
+);
