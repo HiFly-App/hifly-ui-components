@@ -7,6 +7,8 @@ const terser = require('@rollup/plugin-terser');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 const image = require('@rollup/plugin-image');
 
+const babel = require('@rollup/plugin-babel');
+
 const packageJson = require('./package.json');
 
 const production = !process.env.ROLLUP_WATCH; // Detect production mode
@@ -37,6 +39,12 @@ module.exports = [
         outDir: './dist', // Ensure output goes to dist
       }),
       postcss(),
+      babel({
+        babelHelpers: 'bundled', // Use 'bundled' or 'runtime' based on your use case
+        presets: ['@babel/preset-env', '@babel/preset-react'],
+        plugins: ['@emotion/babel-plugin'],
+        exclude: 'node_modules/**', // Only transpile our source code
+      }),
       production && terser(), // Minify only in production
       image(),
     ],
