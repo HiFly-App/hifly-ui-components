@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import React from 'react';
 import {TextProps, TextVariant} from './types';
 import {TextDefinition, TextWeightDeclartion} from './TextDefinition';
-import {TextColors} from '../../theme';
+import {Text as NativeText} from 'react-native';
 
 export const Text = ({
   variant,
@@ -30,7 +30,7 @@ export const Text = ({
   );
 };
 
-const StyledText = styled.Text<{
+const StyledText = styled(NativeText)<{
   size: string;
   lineHeight: string;
   weight: string;
