@@ -1,6 +1,6 @@
-import {TextDefinitionType, TextWeightType} from './types';
+import {TypographyDefinitionType, TypographyWeightType} from './types';
 
-export const TextDefinition: TextDefinitionType = {
+export const TypographyDefinition: TypographyDefinitionType = {
   display: {
     '2xl': {
       fontSize: 72,
@@ -55,7 +55,7 @@ export const TextDefinition: TextDefinitionType = {
   },
 };
 
-export const TextWeightDeclartion: TextWeightType = {
+export const TextWeightDeclartion: TypographyWeightType = {
   regular: '400',
   medium: '500',
   semibold: '600',

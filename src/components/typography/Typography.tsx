@@ -1,10 +1,9 @@
 import styled from '@emotion/native';
 import React from 'react';
-import {TextProps, TextVariant} from './types';
-import {TextDefinition, TextWeightDeclartion} from './TextDefinition';
-import {Text as NativeText} from 'react-native';
+import {TypographyDefinition, TextWeightDeclartion} from './TypographyDefinition';
+import {TypographyProps, TypographyVariant} from './types';
 
-export const Text = ({
+export const Typography = ({
   variant,
   size = 'sm',
   weight = 'regular',
@@ -12,8 +11,8 @@ export const Text = ({
   overideColor,
   children,
   ...rest
-}: TextProps) => {
-  const textDefinition = TextDefinition[variant][size];
+}: TypographyProps) => {
+  const textDefinition = TypographyDefinition[variant][size];
   const textWeight = TextWeightDeclartion[weight];
 
   return (
@@ -30,12 +29,12 @@ export const Text = ({
   );
 };
 
-const StyledText = styled(NativeText)<{
+const StyledText = styled.Text<{
   size: string;
   lineHeight: string;
   weight: string;
   align: string;
-  variant: TextVariant;
+  variant: TypographyVariant;
   overideColor?: string;
 }>(
   ({size, lineHeight, weight, align, variant, overideColor, theme}) => `
