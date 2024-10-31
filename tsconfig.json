@@ -5,8 +5,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-
-    "jsx": "react",
+    "jsx": "react-native", // Keep this as is
     "module": "ESNext",
     "declaration": true,
     "outDir": "./dist", // Emit all output (JS & d.ts) to dist
@@ -15,5 +14,5 @@
     "emitDeclarationOnly": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "files": ["emotion.d.ts"]
+  "files": ["emotion.d.ts"] // Ensure this file exists
 }

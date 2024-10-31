@@ -6,7 +6,6 @@ const postcss = require('rollup-plugin-postcss');
 const terser = require('@rollup/plugin-terser');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 const image = require('@rollup/plugin-image');
-
 const babel = require('@rollup/plugin-babel');
 
 const packageJson = require('./package.json');
@@ -15,15 +14,15 @@ const production = !process.env.ROLLUP_WATCH; // Detect production mode
 
 module.exports = [
   {
-    input: 'src/index.ts', // Entry point for your source code
+    input: 'src/index.ts',
     output: [
       {
-        file: packageJson.main, // Output for CommonJS
+        file: packageJson.main,
         format: 'cjs',
         sourcemap: false,
       },
       {
-        file: packageJson.module, // Output for ESModules
+        file: packageJson.module,
         format: 'esm',
         sourcemap: false,
       },
@@ -35,17 +34,18 @@ module.exports = [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
-        declarationDir: undefined, // Let TypeScript handle declarations normally
-        outDir: './dist', // Ensure output goes to dist
+        declarationDir: undefined,
+        outDir: './dist',
+      }),
+      babel({
+        babelHelpers: 'bundled',
+        exclude: 'node_modules/**',
+        extensions: ['.js', '.jsx', '.ts', '.tsx'], // Ensure this includes .tsx
+        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+        plugins: ['@emotion/babel-plugin'],
       }),
       postcss(),
-      babel({
-        babelHelpers: 'bundled', // Use 'bundled' or 'runtime' based on your use case
-        presets: ['@babel/preset-env', '@babel/preset-react'],
-        plugins: ['@emotion/babel-plugin'],
-        exclude: 'node_modules/**', // Only transpile our source code
-      }),
-      production && terser(), // Minify only in production
+      production && terser(),
       image(),
     ],
     onwarn: function (warning, warn) {
@@ -56,10 +56,10 @@ module.exports = [
     },
   },
   {
-    input: 'dist/index.d.ts', // Input for .d.ts file bundle
+    input: 'dist/index.d.ts',
     output: [{file: 'dist/index.d.ts', format: 'esm'}],
     plugins: [dts()],
-    external: [/\.css$/], // Ignore CSS files in .d.ts generation
+    external: [/\.css$/],
     onwarn: function (warning, warn) {
       if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.indexOf('use client') !== -1) {
         return;
