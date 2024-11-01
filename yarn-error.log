@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/manojgamachchige/.nvm/versions/node/v20.9.0/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js add -D @babel/plugin-proposal-export-namespace-from @babel/runtime @motion/bebl-plugin babel-loader bable-plugin-module-resolver babel=plugin-react-native-web
+  /Users/manojgamachchige/.nvm/versions/node/v20.9.0/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js tsc
 
 PATH: 
   /Users/manojgamachchige/.nvm/versions/node/v20.9.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/iTerm.app/Contents/Resources/utilities
@@ -14,17 +14,12 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@motion%2fbebl-plugin: Not found
-      at params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
-      at self.callback (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
-      at Request.emit (node:events:514:28)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141862:10)
-      at Request.emit (node:events:514:28)
-      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:628:28)
-      at IncomingMessage.emit (node:events:526:35)
-      at endReadableNT (node:internal/streams/readable:1408:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  SyntaxError: /Users/manojgamachchige/Projects/HiFly/hifly-ui-components/package.json: Expected ',' or '}' after property value in JSON at position 681
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -47,11 +42,13 @@ npm manifest:
       "deploy-storybook": "npm run predeploy && gh-pages -d storybook-static",
       "build-storybook": "storybook build",
       "semantic-release": "semantic-release --branches main"
+      "tsc": "tsc"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
       "@babel/core": "^7.25.9",
+      "@babel/plugin-transform-export-namespace-from": "^7.25.9",
       "@babel/preset-env": "^7.26.0",
       "@babel/preset-react": "^7.25.9",
       "@babel/preset-typescript": "^7.26.0",
@@ -102,14 +99,18 @@ npm manifest:
       "rollup-plugin-terser": "^7.0.2",
       "semantic-release": "^24.1.3",
       "storybook": "^8.3.6",
-      "typescript": "^5.6.3"
+      "typescript": "^5.6.3",
+      "react-native-reanimated": "^3.16.1"
     },
     "peerDependencies": {
-      "@emotion/native": "^11.11.0",
-      "@emotion/react": "^11.13.3",
-      "@emotion/styled": "^11.13.0",
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0"
+      "@emotion/native": "*",
+      "@emotion/react": "*",
+      "@emotion/styled": "*",
+      "react": "*",
+      "react-dom": "*",
+      "react-native": "*",
+      "react-native-reanimated": "*",
+      "react-native-web": "*"
     },
     "repository": {
       "type": "git",
@@ -657,7 +658,7 @@ Lockfile:
       "@babel/helper-create-regexp-features-plugin" "^7.18.6"
       "@babel/helper-plugin-utils" "^7.18.6"
   
-  "@babel/plugin-transform-arrow-functions@^7.0.0", "@babel/plugin-transform-arrow-functions@^7.24.7", "@babel/plugin-transform-arrow-functions@^7.25.9":
+  "@babel/plugin-transform-arrow-functions@^7.0.0", "@babel/plugin-transform-arrow-functions@^7.0.0-0", "@babel/plugin-transform-arrow-functions@^7.24.7", "@babel/plugin-transform-arrow-functions@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.25.9.tgz"
     integrity sha512-6jmooXYIwn9ca5/RylZADJ+EnSxVUS5sjeJ9UPk6RWRzXCmOJCy6dqItPJFpw2cuCangPK4OYr5uhGKcmrm5Qg==
@@ -696,7 +697,7 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.25.9"
   
-  "@babel/plugin-transform-class-properties@^7.25.4", "@babel/plugin-transform-class-properties@^7.25.9":
+  "@babel/plugin-transform-class-properties@^7.0.0-0", "@babel/plugin-transform-class-properties@^7.25.4", "@babel/plugin-transform-class-properties@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-class-properties/-/plugin-transform-class-properties-7.25.9.tgz"
     integrity sha512-bbMAII8GRSkcd0h0b4X+36GksxuheLFjP65ul9w6C3KgAamI3JqErNgSrosX6ZPj+Mpim5VvEbawXxJCyEUV3Q==
@@ -712,7 +713,7 @@ Lockfile:
       "@babel/helper-create-class-features-plugin" "^7.25.9"
       "@babel/helper-plugin-utils" "^7.25.9"
   
-  "@babel/plugin-transform-classes@^7.0.0", "@babel/plugin-transform-classes@^7.25.4", "@babel/plugin-transform-classes@^7.25.9":
+  "@babel/plugin-transform-classes@^7.0.0", "@babel/plugin-transform-classes@^7.0.0-0", "@babel/plugin-transform-classes@^7.25.4", "@babel/plugin-transform-classes@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-classes/-/plugin-transform-classes-7.25.9.tgz"
     integrity sha512-mD8APIXmseE7oZvZgGABDyM34GUmK45Um2TXiBUt7PnuAxrgoSVf123qUzPxEr/+/BHrRn5NMZCdE2m/1F8DGg==
@@ -779,7 +780,7 @@ Lockfile:
   
   "@babel/plugin-transform-export-namespace-from@^7.25.9":
     version "7.25.9"
-    resolved "https://registry.npmjs.org/@babel/plugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.25.9.tgz"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.25.9.tgz#90745fe55053394f554e40584cda81f2c8a402a2"
     integrity sha512-2NsEz+CxzJIVOPx2o9UsW1rXLqtChtLoVnwYHHiB04wS5sgn7mrV45fWMBX0Kk+ub9uXytVYfNP2HjbVbCB3Ww==
     dependencies:
       "@babel/helper-plugin-utils" "^7.25.9"
@@ -887,7 +888,7 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.25.9"
   
-  "@babel/plugin-transform-nullish-coalescing-operator@^7.24.7", "@babel/plugin-transform-nullish-coalescing-operator@^7.25.9":
+  "@babel/plugin-transform-nullish-coalescing-operator@^7.0.0-0", "@babel/plugin-transform-nullish-coalescing-operator@^7.24.7", "@babel/plugin-transform-nullish-coalescing-operator@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-nullish-coalescing-operator/-/plugin-transform-nullish-coalescing-operator-7.25.9.tgz"
     integrity sha512-ENfftpLZw5EItALAD4WsY/KUWvhUlZndm5GC7G3evUsVeSJB6p0pBeLQUnRnBCBx7zV0RKQjR9kCuwrsIrjWog==
@@ -925,7 +926,7 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.25.9"
   
-  "@babel/plugin-transform-optional-chaining@^7.24.8", "@babel/plugin-transform-optional-chaining@^7.25.9":
+  "@babel/plugin-transform-optional-chaining@^7.0.0-0", "@babel/plugin-transform-optional-chaining@^7.24.8", "@babel/plugin-transform-optional-chaining@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.25.9.tgz"
     integrity sha512-6AvV0FsLULbpnXeBjrY4dmWF8F7gf8QnvTEoO/wX/5xm/xE1Xo8oPuD3MPS+KS9f9XBEAWN7X1aWr4z9HdOr7A==
@@ -1046,7 +1047,7 @@ Lockfile:
       babel-plugin-polyfill-regenerator "^0.6.1"
       semver "^6.3.1"
   
-  "@babel/plugin-transform-shorthand-properties@^7.0.0", "@babel/plugin-transform-shorthand-properties@^7.24.7", "@babel/plugin-transform-shorthand-properties@^7.25.9":
+  "@babel/plugin-transform-shorthand-properties@^7.0.0", "@babel/plugin-transform-shorthand-properties@^7.0.0-0", "@babel/plugin-transform-shorthand-properties@^7.24.7", "@babel/plugin-transform-shorthand-properties@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.25.9.tgz"
     integrity sha512-MUv6t0FhO5qHnS/W8XCbHmiRWOphNufpE1IVxhK5kuN3Td9FT1x4rx4K42s3RYdMXCXpfWkGSbCSd0Z64xA7Ng==
@@ -1068,7 +1069,7 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.25.9"
   
-  "@babel/plugin-transform-template-literals@^7.25.9":
+  "@babel/plugin-transform-template-literals@^7.0.0-0", "@babel/plugin-transform-template-literals@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-template-literals/-/plugin-transform-template-literals-7.25.9.tgz"
     integrity sha512-o97AE4syN71M/lxrCtQByzphAdlYluKPDBzDVzMmfCobUjjhAryZV0AIpRPrxN0eAkxXO6ZLEScmt+PNhj2OTw==
@@ -1108,7 +1109,7 @@ Lockfile:
       "@babel/helper-create-regexp-features-plugin" "^7.25.9"
       "@babel/helper-plugin-utils" "^7.25.9"
   
-  "@babel/plugin-transform-unicode-regex@^7.0.0", "@babel/plugin-transform-unicode-regex@^7.24.7", "@babel/plugin-transform-unicode-regex@^7.25.9":
+  "@babel/plugin-transform-unicode-regex@^7.0.0", "@babel/plugin-transform-unicode-regex@^7.0.0-0", "@babel/plugin-transform-unicode-regex@^7.24.7", "@babel/plugin-transform-unicode-regex@^7.25.9":
     version "7.25.9"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.25.9.tgz"
     integrity sha512-yoxstj7Rg9dlNn9UQxzk4fcNivwv4nUYz7fYXBaKxvw/lnmPuOm/ikoELygbYq68Bls3D/D+NBPHiLwZdZZ4HA==
@@ -1240,7 +1241,7 @@ Lockfile:
       "@babel/plugin-transform-modules-commonjs" "^7.25.9"
       "@babel/plugin-transform-typescript" "^7.25.9"
   
-  "@babel/preset-typescript@^7.26.0":
+  "@babel/preset-typescript@^7.16.7", "@babel/preset-typescript@^7.26.0":
     version "7.26.0"
     resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.26.0.tgz#4a570f1b8d104a242d923957ffa1eaff142a106d"
     integrity sha512-NMk1IGZ5I/oHhoXEElcm+xUnL/szL6xflkFZmoEU9xj1qSJXpiS7rsspYo92B4DRCDvZn2erT5LdsCeXAKNCkg==
@@ -9455,6 +9456,23 @@ Lockfile:
     version "18.3.1"
     resolved "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz"
     integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
+  
+  react-native-reanimated@^3.16.1:
+    version "3.16.1"
+    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.16.1.tgz#7c3cb256adb8fb436f57911d0e8e7cae68e28a67"
+    integrity sha512-Wnbo7toHZ6kPLAD8JWKoKCTfNoqYOMW5vUEP76Rr4RBmJCrdXj6oauYP0aZnZq8NCbiP5bwwu7+RECcWtoetnQ==
+    dependencies:
+      "@babel/plugin-transform-arrow-functions" "^7.0.0-0"
+      "@babel/plugin-transform-class-properties" "^7.0.0-0"
+      "@babel/plugin-transform-classes" "^7.0.0-0"
+      "@babel/plugin-transform-nullish-coalescing-operator" "^7.0.0-0"
+      "@babel/plugin-transform-optional-chaining" "^7.0.0-0"
+      "@babel/plugin-transform-shorthand-properties" "^7.0.0-0"
+      "@babel/plugin-transform-template-literals" "^7.0.0-0"
+      "@babel/plugin-transform-unicode-regex" "^7.0.0-0"
+      "@babel/preset-typescript" "^7.16.7"
+      convert-source-map "^2.0.0"
+      invariant "^2.2.4"
   
   react-native-safe-area-context@^4.11.1:
     version "4.11.1"

@@ -48,6 +48,15 @@ module.exports = [
       production && terser(),
       image(),
     ],
+    external: [
+      'react',
+      'react-dom',
+      'react-native',
+      '@emotion/native',
+      '@emotion/react',
+      '@emotion/styled',
+      'react-native-web',
+    ],
     onwarn: function (warning, warn) {
       if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.indexOf('use client') !== -1) {
         return;
