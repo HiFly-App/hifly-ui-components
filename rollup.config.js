@@ -21,25 +21,11 @@ module.exports = [
         file: packageJson.main,
         format: 'cjs',
         sourcemap: true,
-        globals: {
-          react: 'React',
-          'react-native': 'ReactNative',
-          '@emotion/native': 'emotionNative',
-          '@emotion/react': 'emotionReact',
-          '@emotion/styled': 'emotionStyled',
-        },
       },
       {
         file: packageJson.module,
         format: 'esm',
         sourcemap: true,
-        globals: {
-          react: 'React',
-          'react-native': 'ReactNative',
-          '@emotion/native': 'emotionNative',
-          '@emotion/react': 'emotionReact',
-          '@emotion/styled': 'emotionStyled',
-        },
       },
     ],
     plugins: [
@@ -51,7 +37,6 @@ module.exports = [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
-        declarationDir: undefined,
         outDir: './dist',
       }),
       babel({
