@@ -34,7 +34,7 @@ jobs:
         run: yarn
 
       - name: Build
-        run: yarn rollup
+        run: yarn build
 
       - name: Publish
         run: yarn semantic-release
