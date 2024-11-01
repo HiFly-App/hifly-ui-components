@@ -13,23 +13,40 @@ const packageJson = require('./package.json');
 const production = !process.env.ROLLUP_WATCH; // Detect production mode
 
 module.exports = [
+  // JS and ESM bundle configuration
   {
     input: 'src/index.ts',
     output: [
       {
         file: packageJson.main,
         format: 'cjs',
-        sourcemap: false,
+        sourcemap: true,
+        globals: {
+          react: 'React',
+          'react-native': 'ReactNative',
+          '@emotion/native': 'emotionNative',
+          '@emotion/react': 'emotionReact',
+          '@emotion/styled': 'emotionStyled',
+        },
       },
       {
         file: packageJson.module,
         format: 'esm',
-        sourcemap: false,
+        sourcemap: true,
+        globals: {
+          react: 'React',
+          'react-native': 'ReactNative',
+          '@emotion/native': 'emotionNative',
+          '@emotion/react': 'emotionReact',
+          '@emotion/styled': 'emotionStyled',
+        },
       },
     ],
     plugins: [
-      peerDepsExternal(),
-      resolve(),
+      peerDepsExternal(), // Automatically marks peerDependencies as external
+      resolve({
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      }),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
@@ -44,9 +61,9 @@ module.exports = [
         presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
         plugins: ['@emotion/babel-plugin'],
       }),
-      postcss(),
-      production && terser(),
-      image(),
+      postcss(), // Process CSS with PostCSS
+      production && terser(), // Minify code in production
+      image(), // Allow image imports
     ],
     external: [
       'react',
@@ -58,19 +75,21 @@ module.exports = [
       'react-native-web',
     ],
     onwarn: function (warning, warn) {
-      if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.indexOf('use client') !== -1) {
+      if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
         return;
       }
       warn(warning);
     },
   },
+
+  // Types declaration configuration
   {
     input: 'dist/index.d.ts',
     output: [{file: 'dist/index.d.ts', format: 'esm'}],
     plugins: [dts()],
     external: [/\.css$/],
     onwarn: function (warning, warn) {
-      if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.indexOf('use client') !== -1) {
+      if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
         return;
       }
       warn(warning);
