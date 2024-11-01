@@ -6,7 +6,7 @@ import {GetButtonColorDefinition, ButtonSizeDefinition} from './ButtonDefinition
 
 export const Button = ({label, variant, size = 'sm', state = 'default', overideStyles, ...rest}: ButtonProps) => {
   const {colors} = useTheme();
-  const {height, fontSize, lineHeight, padding} = ButtonSizeDefinition[size];
+  const {height, fontSize, padding} = ButtonSizeDefinition[size];
 
   const {backgroundColor, border, color} = GetButtonColorDefinition(colors)[variant][state];
 
@@ -17,7 +17,7 @@ export const Button = ({label, variant, size = 'sm', state = 'default', overideS
       backgroundColor={overideStyles?.backgroundColor ?? backgroundColor}
       border={overideStyles?.border ?? border}
       {...rest}>
-      <ButtonText fontSize={fontSize} lineHeight={lineHeight} color={overideStyles?.color ?? color}>
+      <ButtonText fontSize={fontSize} color={overideStyles?.color ?? color}>
         {label}
       </ButtonText>
     </StyledButton>
@@ -41,9 +41,8 @@ const StyledButton = styled.Pressable<{
   align-items: center;
 `;
 
-const ButtonText = styled.Text<{fontSize: string; lineHeight: string; color: string}>`
+const ButtonText = styled.Text<{fontSize: string; color: string}>`
   font-size: ${({fontSize}) => fontSize};
-  line-height: ${({lineHeight}) => lineHeight};
   font-weight: 600;
   font-family: 'Inter';
   color: ${({color}) => color};

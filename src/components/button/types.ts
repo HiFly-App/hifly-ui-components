@@ -21,7 +21,6 @@ export type ButtonSizeDefinitionType = {
     height: string;
     padding: string;
     fontSize: string;
-    lineHeight: string;
   };
 };
 

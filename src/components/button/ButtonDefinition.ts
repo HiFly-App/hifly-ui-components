@@ -6,31 +6,26 @@ export const ButtonSizeDefinition: ButtonSizeDefinitionType = {
     height: '36px',
     padding: '8px 12px',
     fontSize: '14px',
-    lineHeight: '20px',
   },
   md: {
     height: '40px',
     padding: '10px 14px',
     fontSize: '14px',
-    lineHeight: '20px',
   },
   lg: {
     height: '44px',
     padding: '10px 16px',
     fontSize: '16px',
-    lineHeight: '24px',
   },
   xl: {
     height: '48px',
     padding: '12px 18px',
     fontSize: '16px',
-    lineHeight: '24px',
   },
   '2xl': {
     height: '60px',
     padding: '16px 22px',
     fontSize: '18px',
-    lineHeight: '28px',
   },
 };
 
