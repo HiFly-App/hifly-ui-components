@@ -59,6 +59,7 @@ module.exports = [
       '@emotion/styled',
       'react-native-web',
       'react-native-reanimated',
+      '@emotion/primitives-core', // Add this line
     ],
     onwarn: function (warning, warn) {
       if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
