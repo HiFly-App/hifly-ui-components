@@ -23,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.25.9",
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.26.0",
@@ -73,14 +74,18 @@
     "rollup-plugin-terser": "^7.0.2",
     "semantic-release": "^24.1.3",
     "storybook": "^8.3.6",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "react-native-reanimated": "^3.16.1"
   },
   "peerDependencies": {
-    "@emotion/native": "^11.11.0",
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@emotion/native": "*",
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*",
+    "react-native-reanimated": "*",
+    "react-native-web": "*"
   },
   "repository": {
     "type": "git",
