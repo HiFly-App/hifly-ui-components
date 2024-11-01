@@ -13,14 +13,13 @@ export const Button = ({label, variant, size = 'sm', state = 'default', overideS
   return (
     <StyledButton
       height={height}
-      fontSize={fontSize}
-      lineHeight={lineHeight}
       padding={padding}
       backgroundColor={overideStyles?.backgroundColor ?? backgroundColor}
       border={overideStyles?.border ?? border}
-      color={overideStyles?.color ?? color}
       {...rest}>
-      {label}
+      <ButtonText fontSize={fontSize} lineHeight={lineHeight} color={overideStyles?.color ?? color}>
+        {label}
+      </ButtonText>
     </StyledButton>
   );
 };
@@ -28,22 +27,23 @@ export const Button = ({label, variant, size = 'sm', state = 'default', overideS
 const StyledButton = styled.Pressable<{
   height: string;
   padding: string;
-  fontSize: string;
-  lineHeight: string;
   backgroundColor: string;
   border: string;
-  color: string;
 }>`
   align-self: flex-start;
   border-radius: 8px;
   background-color: ${({backgroundColor}) => backgroundColor};
-  color: ${({color}) => color};
+
   padding: ${({padding}) => padding};
   height: ${({height}) => height};
+  border: ${({border}) => border};
+  justify-content: center;
+`;
+
+const ButtonText = styled.Text<{fontSize: string; lineHeight: string; color: string}>`
   font-size: ${({fontSize}) => fontSize};
   line-height: ${({lineHeight}) => lineHeight};
   font-weight: 600;
-  border: ${({border}) => border};
   font-family: 'Inter';
-  justify-content: center;
+  color: ${({color}) => color};
 `;
