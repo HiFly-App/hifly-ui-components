@@ -30,14 +30,15 @@ const StyledButton = styled.Pressable<{
   backgroundColor: string;
   border: string;
 }>`
+  display: flex;
   align-self: flex-start;
   border-radius: 8px;
   background-color: ${({backgroundColor}) => backgroundColor};
-
   padding: ${({padding}) => padding};
   height: ${({height}) => height};
   border: ${({border}) => border};
   justify-content: center;
+  align-items: center;
 `;
 
 const ButtonText = styled.Text<{fontSize: string; lineHeight: string; color: string}>`
