@@ -95,6 +95,7 @@ const colorsLightMode: ColorVariablesType = {
     error_primary: baseColors.error600,
     warning_primary: baseColors.warning600,
     sucess_primary: baseColors.success600,
+    success_badge: baseColors.success700,
   },
   border: {
     primary: baseColors.gray300,
@@ -106,6 +107,7 @@ const colorsLightMode: ColorVariablesType = {
     brand_alt: baseColors.brand600,
     error: baseColors.error500,
     error_subtle: baseColors.error300,
+    success: baseColors.success200,
   },
   forground: {
     primary: baseColors.gray900,
@@ -163,6 +165,7 @@ const colorsLightMode: ColorVariablesType = {
     success_primary: baseColors.success50,
     success_secondary: baseColors.success100,
     success_solid: baseColors.success600,
+    success_badge: baseColors.success50,
   },
 };
 
@@ -189,6 +192,7 @@ const colorsDarkMode: ColorVariablesType = {
     error_primary: baseColors.error400,
     warning_primary: baseColors.warning400,
     sucess_primary: baseColors.success400,
+    success_badge: baseColors.success300,
   },
   border: {
     primary: baseColors.gray700,
@@ -200,6 +204,7 @@ const colorsDarkMode: ColorVariablesType = {
     brand_alt: baseColors.gray700,
     error: baseColors.error400,
     error_subtle: baseColors.error400,
+    success: baseColors.success800,
   },
   forground: {
     primary: baseColors.white,
@@ -257,6 +262,7 @@ const colorsDarkMode: ColorVariablesType = {
     success_primary: baseColors.success500,
     success_secondary: baseColors.success600,
     success_solid: baseColors.success600,
+    success_badge: baseColors.success950,
   },
 };
 

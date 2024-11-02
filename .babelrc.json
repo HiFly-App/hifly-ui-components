@@ -1,10 +1,5 @@
 {
   "sourceType": "unambiguous",
   "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-  "plugins": [
-    "@emotion",
-    "react-html-attrs",
-    "@babel/plugin-transform-export-namespace-from",
-    "react-native-reanimated/plugin"
-  ]
+  "plugins": ["@emotion", "react-html-attrs", "@babel/plugin-transform-export-namespace-from"]
 }

@@ -8,7 +8,7 @@ export type ButtonProps = {
   variant: ButtonVariants;
   size?: ButtonSizes;
   label: string;
-  state: ButtonStates;
+  state?: ButtonStates;
   overideStyles?: {
     backgroundColor?: string;
     color?: string;

@@ -20,6 +20,7 @@ export type TextColors = {
   error_primary: string;
   warning_primary: string;
   sucess_primary: string;
+  success_badge: string;
 };
 
 export type BorderColors = {
@@ -32,6 +33,7 @@ export type BorderColors = {
   brand_alt: string;
   error: string;
   error_subtle: string;
+  success: string;
 };
 
 export type ForgroundColors = {
@@ -91,6 +93,7 @@ export type BackgroundColors = {
   success_primary: string;
   success_secondary: string;
   success_solid: string;
+  success_badge: string;
 };
 
 export type ColorVariablesType = {
