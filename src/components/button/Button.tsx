@@ -8,7 +8,7 @@ export const Button = ({label, variant, size = 'sm', state = 'default', overideS
   const {colors} = useTheme();
   const {height, fontSize, padding} = ButtonSizeDefinition[size];
 
-  const {backgroundColor, border, color} = GetButtonColorDefinition(colors)[variant][state];
+  const {backgroundColor, border, color} = GetButtonColorDefinition(colors.button)[variant][state];
 
   return (
     <StyledButton
