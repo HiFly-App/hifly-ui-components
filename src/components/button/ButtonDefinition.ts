@@ -33,36 +33,36 @@ export const GetButtonColorDefinition = (colors: ColorVariablesType): ButtonColo
   return {
     primary: {
       default: {
-        backgroundColor: colors.forground.brand_primary,
-        color: colors.text.primary_brand,
-        border: '2px solid rgba(255, 255, 255, 0.12)',
+        backgroundColor: colors.button.primary_default,
+        color: colors.button.primary_default_text,
+        border: `2px solid ${colors.button.primary_default_border}`,
       },
       hover: {
-        backgroundColor: colors.background.brand_solid_hover,
-        color: colors.text.primary_brand,
-        border: '2px solid rgba(255, 255, 255, 0.24)',
+        backgroundColor: colors.button.primary_hover,
+        color: colors.button.primary_hover_text,
+        border: `2px solid ${colors.button.primary_hover_border}`,
       },
       disabled: {
-        backgroundColor: colors.background.disabled,
-        color: colors.forground.disabled,
-        border: `1px solid ${colors.border.disabled_subtle}`,
+        backgroundColor: colors.button.primary_disabled,
+        color: colors.button.primary_disabled_text,
+        border: `1px solid ${colors.button.primary_disabled_border}`,
       },
     },
     secondary: {
       default: {
-        backgroundColor: colors.background.primary,
-        color: colors.text.secondary,
-        border: `1px solid ${colors.border.primary}`,
+        backgroundColor: colors.button.secondary_default,
+        color: colors.button.secondary_default_text,
+        border: `2px solid ${colors.button.secondary_default_border}`,
       },
       hover: {
-        backgroundColor: colors.background.primary_hover,
-        color: colors.text.secondary_hover,
-        border: `1px solid ${colors.border.primary}`,
+        backgroundColor: colors.button.secondary_hover,
+        color: colors.button.secondary_hover_text,
+        border: `2px solid ${colors.button.secondary_hover_border}`,
       },
       disabled: {
-        backgroundColor: colors.background.primary,
-        color: colors.forground.disabled,
-        border: `1px solid ${colors.border.disabled_subtle}`,
+        backgroundColor: colors.button.secondary_disabled,
+        color: colors.button.secondary_disabled_text,
+        border: `1px solid ${colors.button.secondary_disabled_border}`,
       },
     },
   };

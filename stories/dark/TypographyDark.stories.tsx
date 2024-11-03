@@ -18,7 +18,7 @@ const meta: Meta<TypographyProps> = {
   decorators: [
     Story => (
       <ThemeProvider theme={getDefaultTheme('dark')}>
-        <View style={{flex: 1, backgroundColor: getDefaultTheme('dark').colors.background.primary}}>
+        <View style={{flex: 1, backgroundColor: getDefaultTheme('dark').colors.background.primary, padding: 20}}>
           <Story />
         </View>
       </ThemeProvider>
@@ -35,6 +35,7 @@ export const VariantText: Story = {
     variant: 'text',
     size: 'sm',
     weight: 'regular',
+    color: 'primary',
   },
 };
 
@@ -43,5 +44,6 @@ export const VariantDisplay: Story = {
     variant: 'display',
     size: '2xl',
     weight: 'regular',
+    color: 'primary',
   },
 };

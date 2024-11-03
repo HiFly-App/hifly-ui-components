@@ -1,10 +1,12 @@
 import styled from '@emotion/native';
 import React from 'react';
-import {TypographyDefinition, TextWeightDeclartion} from './TypographyDefinition';
-import {TypographyProps, TypographyVariant} from './types';
+import {GetTypographyColorDefinition, TypographyDefinition, TypographyWeightDefinition} from './TypographyDefinition';
+import {TypographyColorType, TypographyProps, TypographyVariant} from './types';
+import {useTheme} from '@emotion/react';
 
 export const Typography = ({
   variant,
+  color = 'primary',
   size = 'sm',
   weight = 'regular',
   align = 'left',
@@ -12,8 +14,11 @@ export const Typography = ({
   children,
   ...rest
 }: TypographyProps) => {
+  const {colors: themecolors} = useTheme();
   const textDefinition = TypographyDefinition[variant][size];
-  const textWeight = TextWeightDeclartion[weight];
+  const textWeight = TypographyWeightDefinition[weight];
+  console.log(GetTypographyColorDefinition(themecolors));
+  const textColor = overideColor ?? GetTypographyColorDefinition(themecolors)[color];
 
   return (
     <StyledText
@@ -22,7 +27,7 @@ export const Typography = ({
       align={align}
       weight={textWeight}
       variant={variant}
-      overideColor={overideColor}
+      textColor={textColor}
       {...rest}>
       {children}
     </StyledText>
@@ -35,13 +40,13 @@ const StyledText = styled.Text<{
   weight: string;
   align: string;
   variant: TypographyVariant;
-  overideColor?: string;
+  textColor: string;
 }>(
-  ({size, lineHeight, weight, align, variant, overideColor, theme}) => `
+  ({size, lineHeight, weight, align, variant, textColor}) => `
   font-size: ${size};
   line-height: ${lineHeight};
   font-weight: ${weight};
-  color: ${overideColor ? overideColor : theme.colors.text.primary};
+  color: ${textColor};
   text-align: ${align};
   font-family: ${variant === 'text' ? 'Inter' : 'IBM Plex Sans'};
 `,

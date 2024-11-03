@@ -1,4 +1,5 @@
-import {TypographyDefinitionType, TypographyWeightType} from './types';
+import {ColorVariablesType} from '../../theme';
+import {TypographyColorDefinitionType, TypographyDefinitionType, TypographyWeightDefinitionType} from './types';
 
 export const TypographyDefinition: TypographyDefinitionType = {
   display: {
@@ -55,9 +56,22 @@ export const TypographyDefinition: TypographyDefinitionType = {
   },
 };
 
-export const TextWeightDeclartion: TypographyWeightType = {
+export const TypographyWeightDefinition: TypographyWeightDefinitionType = {
   regular: '400',
   medium: '500',
   semibold: '600',
   bold: '700',
+};
+
+export const GetTypographyColorDefinition = (colors: ColorVariablesType): TypographyColorDefinitionType => {
+  return {
+    brand: colors.text.brand,
+    tertiary: colors.text.tertiary,
+    primary: colors.text.primary,
+    secondary: colors.text.secondary,
+    success: colors.text.success,
+    quaternary: colors.text.quaternary,
+    error: colors.text.error,
+    warning: colors.text.warning,
+  };
 };
