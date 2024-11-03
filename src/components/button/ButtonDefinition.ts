@@ -1,4 +1,4 @@
-import {ColorVariablesType} from '../../theme';
+import {ButtonColors} from '../../theme';
 import {ButtonColorDefinitionType, ButtonSizeDefinitionType} from './types';
 
 export const ButtonSizeDefinition: ButtonSizeDefinitionType = {
@@ -29,40 +29,40 @@ export const ButtonSizeDefinition: ButtonSizeDefinitionType = {
   },
 };
 
-export const GetButtonColorDefinition = (colors: ColorVariablesType): ButtonColorDefinitionType => {
+export const GetButtonColorDefinition = (colors: ButtonColors): ButtonColorDefinitionType => {
   return {
     primary: {
       default: {
-        backgroundColor: colors.button.primary_default,
-        color: colors.button.primary_default_text,
-        border: `2px solid ${colors.button.primary_default_border}`,
+        backgroundColor: colors.primary_default,
+        color: colors.primary_default_text,
+        border: `2px solid ${colors.primary_default_border}`,
       },
       hover: {
-        backgroundColor: colors.button.primary_hover,
-        color: colors.button.primary_hover_text,
-        border: `2px solid ${colors.button.primary_hover_border}`,
+        backgroundColor: colors.primary_hover,
+        color: colors.primary_hover_text,
+        border: `2px solid ${colors.primary_hover_border}`,
       },
       disabled: {
-        backgroundColor: colors.button.primary_disabled,
-        color: colors.button.primary_disabled_text,
-        border: `1px solid ${colors.button.primary_disabled_border}`,
+        backgroundColor: colors.primary_disabled,
+        color: colors.primary_disabled_text,
+        border: `1px solid ${colors.primary_disabled_border}`,
       },
     },
     secondary: {
       default: {
-        backgroundColor: colors.button.secondary_default,
-        color: colors.button.secondary_default_text,
-        border: `2px solid ${colors.button.secondary_default_border}`,
+        backgroundColor: colors.secondary_default,
+        color: colors.secondary_default_text,
+        border: `2px solid ${colors.secondary_default_border}`,
       },
       hover: {
-        backgroundColor: colors.button.secondary_hover,
-        color: colors.button.secondary_hover_text,
-        border: `2px solid ${colors.button.secondary_hover_border}`,
+        backgroundColor: colors.secondary_hover,
+        color: colors.secondary_hover_text,
+        border: `2px solid ${colors.secondary_hover_border}`,
       },
       disabled: {
-        backgroundColor: colors.button.secondary_disabled,
-        color: colors.button.secondary_disabled_text,
-        border: `1px solid ${colors.button.secondary_disabled_border}`,
+        backgroundColor: colors.secondary_disabled,
+        color: colors.secondary_disabled_text,
+        border: `1px solid ${colors.secondary_disabled_border}`,
       },
     },
   };

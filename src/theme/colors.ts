@@ -117,6 +117,14 @@ const colorsLightMode: ColorVariablesType = {
     error: baseColors.error600,
     warning: baseColors.warning600,
   },
+  pill: {
+    success: baseColors.success50,
+    success_text: baseColors.success700,
+    success_border: baseColors.success200,
+    error: baseColors.error50,
+    error_text: baseColors.error700,
+    error_border: baseColors.error200,
+  },
 };
 
 const colorsDarkMode: ColorVariablesType = {
@@ -159,6 +167,14 @@ const colorsDarkMode: ColorVariablesType = {
     quaternary: baseColors.text_tertiary_dark,
     error: baseColors.error400,
     warning: baseColors.warning400,
+  },
+  pill: {
+    success: baseColors.success950,
+    success_text: baseColors.success300,
+    success_border: baseColors.success800,
+    error: baseColors.error950,
+    error_text: baseColors.error300,
+    error_border: baseColors.error800,
   },
 };
 

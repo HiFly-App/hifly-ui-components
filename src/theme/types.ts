@@ -41,9 +41,19 @@ export type TextColors = {
   warning: string;
 };
 
+export type PillColors = {
+  success: string;
+  success_text: string;
+  success_border: string;
+  error: string;
+  error_text: string;
+  error_border: string;
+};
+
 export type ColorVariablesType = {
   background: BackgroundColors;
   button: ButtonColors;
   badge: BadgeColors;
   text: TextColors;
+  pill: PillColors;
 };
