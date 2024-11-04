@@ -9,6 +9,8 @@ export const baseColors = {
   text_brand_dark: '#F5F5F6',
   text_tertiary_dark: '#94969C',
   text_secondary_dark: '#CECFD2',
+  card_dark_border: '#1F242F',
+  devider_dark: '#333741',
 
   gray25: '#FCFCFD',
   gray50: '#F9FAFB',
@@ -125,6 +127,13 @@ const colorsLightMode: ColorVariablesType = {
     error_text: baseColors.error700,
     error_border: baseColors.error200,
   },
+  card: {
+    background: baseColors.white,
+    border: `1px solid ${baseColors.gray200}`,
+  },
+  devider: {
+    background: baseColors.gray200,
+  },
 };
 
 const colorsDarkMode: ColorVariablesType = {
@@ -175,6 +184,13 @@ const colorsDarkMode: ColorVariablesType = {
     error: baseColors.error950,
     error_text: baseColors.error300,
     error_border: baseColors.error800,
+  },
+  card: {
+    background: baseColors.gray950,
+    border: `1px solid ${baseColors.card_dark_border}`,
+  },
+  devider: {
+    background: baseColors.devider_dark,
   },
 };
 

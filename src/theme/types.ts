@@ -50,10 +50,19 @@ export type PillColors = {
   error_border: string;
 };
 
+export type CardColors = {
+  background: string;
+  border: string;
+};
+
 export type ColorVariablesType = {
   background: BackgroundColors;
   button: ButtonColors;
   badge: BadgeColors;
   text: TextColors;
   pill: PillColors;
+  card: CardColors;
+  devider: {
+    background: string;
+  };
 };
