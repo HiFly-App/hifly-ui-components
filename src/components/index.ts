@@ -5,3 +5,4 @@ export * from './pill';
 export * from './card';
 export * from './dashboardCard';
 export * from './spacing';
+export * from './icons';

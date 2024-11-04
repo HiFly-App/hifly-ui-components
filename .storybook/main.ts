@@ -15,5 +15,22 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
+  webpackFinal: async config => {
+    // Remove existing file-loader or url-loader rule for SVG
+    config.module?.rules?.forEach(rule => {
+      if (rule && typeof rule === 'object' && 'test' in rule && rule.test && rule.test.toString().includes('svg')) {
+        rule.exclude = /\.svg$/;
+      }
+    });
+
+    // Add @svgr/webpack loader for SVG filesxw
+    config.module?.rules?.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
 };
+
 export default config;

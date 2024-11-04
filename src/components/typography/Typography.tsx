@@ -17,7 +17,6 @@ export const Typography = ({
   const {colors: themecolors} = useTheme();
   const textDefinition = TypographyDefinition[variant][size];
   const textWeight = TypographyWeightDefinition[weight];
-  console.log(GetTypographyColorDefinition(themecolors));
   const textColor = overideColor ?? GetTypographyColorDefinition(themecolors)[color];
 
   return (

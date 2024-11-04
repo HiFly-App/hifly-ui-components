@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {getDefaultTheme, DashboardCard, DashboardCardProps} from '../../src';
+import {getDefaultTheme, DashboardCard, DashboardCardProps, Icons} from '../../src';
 import {ThemeProvider} from '@emotion/react';
 import React, {PropsWithChildren} from 'react';
 import {Text, View} from 'react-native';
@@ -48,6 +48,7 @@ export const DefaultCard: Story = {
         value: '4.3',
         valueColor: 'primary',
         description: '2.1k reviews',
+        icon: Icons.CabinCareAlt,
       },
       {
         title: 'Amemities',
@@ -73,6 +74,7 @@ export const DefaultCardwith2Items: Story = {
         value: '4.3',
         valueColor: 'primary',
         description: '2.1k reviews',
+        icon: Icons.CabinCareAlt,
       },
     ],
   },

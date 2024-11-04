@@ -4,8 +4,10 @@ import {DashboardCardProps} from './types';
 import {Typography} from '../typography';
 import {Spacing} from '../spacing';
 import {Fragment} from 'react';
+import {useTheme} from '@emotion/react';
 
 export const DashboardCard = ({items, headerText}: DashboardCardProps) => {
+  const {colors} = useTheme();
   return (
     <Card>
       {headerText && (
@@ -27,9 +29,12 @@ export const DashboardCard = ({items, headerText}: DashboardCardProps) => {
                   {item.title}
                 </Typography>
                 <Spacing height={4} />
-                <Typography variant="display" size="xs" color={item.valueColor} weight="semibold">
-                  {item.value}
-                </Typography>
+                <ValueWrapper>
+                  {item.icon && <item.icon height={24} width={24} fill={colors.text[item.valueColor ?? 'primary']} />}
+                  <Typography variant="display" size="xs" color={item.valueColor} weight="semibold">
+                    {item.value}
+                  </Typography>
+                </ValueWrapper>
                 <Typography variant="text" size="xs" color="quaternary" weight="regular">
                   {item.description}
                 </Typography>
@@ -69,6 +74,12 @@ const Item = styled.View`
   width: fixd;
 `;
 
+const ValueWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+`;
+
 const DeviderWrapper = styled.View`
   width: 33px;
   align-items: center;
@@ -77,6 +88,7 @@ const DeviderWrapper = styled.View`
 
 const HorizontalDevider = styled.View`
   display: flex;
+  flex: 1;
   width: 1px;
   height: 100%;
   background-color: ${({theme}) => theme.colors.devider.background};
