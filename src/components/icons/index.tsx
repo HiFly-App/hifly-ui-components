@@ -1,7 +1,7 @@
 import CabinCareAlt from './cabin-care-alt.svg';
 import Baggage from './baggage.svg';
 import Gate from './gate.svg';
-import TempLuthansa from './temp/lufthansa.svg';
+import TempLuthansa from './lufthansa.svg';
 
 const Icons = {
   CabinCareAlt,
