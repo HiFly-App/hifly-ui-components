@@ -4,14 +4,15 @@ import {BadgeProps} from './types';
 import {BadgeSizeDefinition, GetBadgeColorDefinition} from './BadgeDefinition';
 import {useTheme} from '@emotion/react';
 
-export const Badge = ({label, size = 'md', type = 'success'}: BadgeProps) => {
+export const Badge = ({label, size = 'md', type = 'success', icon: Icon}: BadgeProps) => {
   const {colors} = useTheme();
-  const {height, fontSize, padding} = BadgeSizeDefinition[size];
-  const {background, text, border} = GetBadgeColorDefinition(colors)[type];
+  const {height, fontSize, padding, lineHeight} = BadgeSizeDefinition[size];
+  const {background, textColor, border} = GetBadgeColorDefinition(colors)[type];
 
   return (
     <StyledBadge height={height} padding={padding} background={background} border={border}>
-      <BadgeText fontSize={fontSize} text={text}>
+      {Icon && <Icon height={12} width={12} stroke={textColor} color={textColor} />}
+      <BadgeText fontSize={fontSize} textColor={textColor} lineHeight={lineHeight}>
         {label}
       </BadgeText>
     </StyledBadge>
@@ -28,14 +29,17 @@ const StyledBadge = styled.View<{
   padding: ${({padding}) => padding};
   height: ${({height}) => height};
   justify-content: center;
+  align-items: center;
   border-radius: 8px;
   background-color: ${({background}) => background};
   border: ${({border}) => border};
+  flex-direction: row;
+  gap: ${({theme}) => `${theme.spacing.xs}px`};
 `;
 
-const BadgeText = styled.Text<{fontSize: string; text: string}>`
+const BadgeText = styled.Text<{fontSize: string; textColor: string; lineHeight: string}>`
   font-size: ${({fontSize}) => fontSize};
   font-weight: 500;
-  color: ${({text}) => text};
+  color: ${({textColor}) => textColor};
   font-family: 'Inter';
 `;

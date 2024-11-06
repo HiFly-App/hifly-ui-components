@@ -1,4 +1,5 @@
 import type {StorybookConfig} from '@storybook/react-webpack5';
+import path from 'path';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -28,6 +29,15 @@ const config: StorybookConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+
+    // Alias for react-native to react-native-web
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      'react-native': 'react-native-web',
+      '@hooks': path.resolve(__dirname, '../src/hooks'),
+      '@components': path.resolve(__dirname, '../src/components'),
+    };
 
     return config;
   },

@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {getDefaultTheme, Badge, BadgeProps} from '../../src';
+import {getDefaultTheme, Badge, BadgeProps, Icons} from '../../src';
 import {ThemeProvider} from '@emotion/react';
 import React from 'react';
 import {View} from 'react-native';
@@ -33,17 +33,20 @@ type Story = StoryObj<BadgeProps>;
 export const SmallBadge: Story = {
   args: {
     size: 'sm',
+    icon: Icons.Gate,
   },
 };
 
 export const MediumBadge: Story = {
   args: {
     size: 'md',
+    icon: Icons.Gate,
   },
 };
 
 export const LargeBadge: Story = {
   args: {
     size: 'lg',
+    icon: Icons.Gate,
   },
 };

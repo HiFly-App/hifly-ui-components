@@ -15,8 +15,8 @@ export const Card = ({width = '100%', children}: CardProps) => {
 
 const Container = styled.View<{width: string; background: string; border: string}>`
   background-color: white;
-  padding: 20px 16px;
-  border-radius: 8px;
+  padding: ${({theme}) => `${theme.spacing.xxl}px ${theme.spacing.xl}px`};
+  border-radius: ${({theme}) => theme.borderRadius};
   width: ${({width}) => width};
   background-color: ${({background}) => background};
   border: ${({border}) => border};

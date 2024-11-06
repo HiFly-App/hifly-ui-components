@@ -21,6 +21,7 @@ export type TypographyProps = {
   weight?: TypographyWeight;
   align?: TypographyAlignment;
   overideColor?: string;
+  maxWidth?: string;
 } & NativeTextProps;
 
 export type TypographyDefinitionType = {

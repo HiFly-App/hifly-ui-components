@@ -11,6 +11,7 @@ export const Typography = ({
   weight = 'regular',
   align = 'left',
   overideColor,
+  maxWidth,
   children,
   ...rest
 }: TypographyProps) => {
@@ -27,7 +28,10 @@ export const Typography = ({
       weight={textWeight}
       variant={variant}
       textColor={textColor}
-      {...rest}>
+      maxWidth={maxWidth}
+      {...rest}
+      numberOfLines={1}
+      textBreakStrategy="simple">
       {children}
     </StyledText>
   );
@@ -40,13 +44,15 @@ const StyledText = styled.Text<{
   align: string;
   variant: TypographyVariant;
   textColor: string;
+  maxWidth?: string;
 }>(
-  ({size, lineHeight, weight, align, variant, textColor}) => `
+  ({size, lineHeight, weight, align, variant, textColor, maxWidth}) => `
   font-size: ${size};
   line-height: ${lineHeight};
   font-weight: ${weight};
   color: ${textColor};
   text-align: ${align};
   font-family: ${variant === 'text' ? 'Inter' : 'IBM Plex Sans'};
+
 `,
 );

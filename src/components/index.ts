@@ -6,3 +6,5 @@ export * from './card';
 export * from './dashboardCard';
 export * from './spacing';
 export * from './icons';
+export * from './airlineRouteCard';
+export * from './airlineCard';
