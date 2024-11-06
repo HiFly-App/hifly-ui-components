@@ -11,12 +11,7 @@
     "outDir": "./dist", // Emit all output (JS & d.ts) to dist
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": false, // Change this to false,
-    "baseUrl": "src",
-    "paths": {
-      "@hooks/*": ["hooks/*"],
-      "@components/*": ["components/*"]
-    }
+    "emitDeclarationOnly": false // Change this to false,
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "files": ["emotion.d.ts", "declaration.d.ts"] // Ensure this file exists

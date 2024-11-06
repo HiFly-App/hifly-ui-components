@@ -1,12 +1,12 @@
-import {Card} from '@components/card';
+import {Card} from '../card';
 import {AirlineCardProps} from './types';
 import styled from '@emotion/native';
-import {Typography} from '@components/typography';
+import {Typography} from '../typography';
 import {useTheme} from '@emotion/react';
-import {Spacing} from '@components/spacing';
-import {Icons} from '@components/icons';
-import {AirbnbRating, Rating} from 'react-native-ratings';
-import {Button} from '@components/button';
+import {Spacing} from '../spacing';
+import {Icons} from '../icons';
+import {AirbnbRating} from 'react-native-ratings';
+import {Button} from '../button';
 
 export const AirlineCard = ({name, subName, country, rating, ratingCount, atc, iata, icao}: AirlineCardProps) => {
   const {spacing} = useTheme();
