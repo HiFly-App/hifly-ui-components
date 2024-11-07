@@ -212,6 +212,7 @@ export const getDefaultTheme = (mode: ThemeMode) => {
       lg: 12,
       xl: 16,
       xxl: 20,
+      xxxl: 24,
     },
   };
 };

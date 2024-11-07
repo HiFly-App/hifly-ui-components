@@ -95,7 +95,6 @@ const TopWrapper = styled.View`
 
 const TopLeftWrapper = styled.View`
   flex-direction: column;
-  //   gap: ${({theme}) => `${theme.spacing.xs}px`};
 `;
 
 const CityWrapper = styled.View`

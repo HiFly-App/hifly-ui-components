@@ -8,3 +8,4 @@ export * from './spacing';
 export * from './icons';
 export * from './airlineRouteCard';
 export * from './airlineCard';
+export * from './aircraftCard';
