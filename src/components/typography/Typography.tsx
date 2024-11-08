@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {GetTypographyColorDefinition, TypographyDefinition, TypographyWeightDefinition} from './TypographyDefinition';
 import {TypographyColorType, TypographyProps, TypographyVariant} from './types';
 import {useTheme} from '@emotion/react';
@@ -11,7 +11,6 @@ export const Typography = ({
   weight = 'regular',
   align = 'left',
   overideColor,
-  maxWidth,
   children,
   ...rest
 }: TypographyProps) => {
@@ -19,6 +18,25 @@ export const Typography = ({
   const textDefinition = TypographyDefinition[variant][size];
   const textWeight = TypographyWeightDefinition[weight];
   const textColor = overideColor ?? GetTypographyColorDefinition(themecolors)[color];
+
+  const fontFamily = useMemo(() => {
+    if (variant === 'text') {
+      return 'Inter';
+    } else {
+      switch (weight) {
+        case 'regular':
+          return 'IBM Plex Sans';
+        case 'medium':
+          return 'IBM Plex Sans Medium';
+        case 'semibold':
+          return 'IBM Plex Sans SemiBold';
+        case 'bold':
+          return 'IBM Plex Sans Bold';
+        default:
+          return 'IBM Plex Sans';
+      }
+    }
+  }, [weight, variant]);
 
   return (
     <StyledText
@@ -28,7 +46,7 @@ export const Typography = ({
       weight={textWeight}
       variant={variant}
       textColor={textColor}
-      maxWidth={maxWidth}
+      fontFamily={fontFamily}
       {...rest}
       numberOfLines={1}
       textBreakStrategy="simple">
@@ -44,15 +62,15 @@ const StyledText = styled.Text<{
   align: string;
   variant: TypographyVariant;
   textColor: string;
-  maxWidth?: string;
+  fontFamily: string;
 }>(
-  ({size, lineHeight, weight, align, variant, textColor, maxWidth}) => `
+  ({size, lineHeight, weight, align, textColor, fontFamily}) => `
   font-size: ${size};
   line-height: ${lineHeight};
   font-weight: ${weight};
   color: ${textColor};
   text-align: ${align};
-  font-family: ${variant === 'text' ? 'Inter' : 'IBM Plex Sans'};
+  font-family: ${fontFamily};
 
 `,
 );

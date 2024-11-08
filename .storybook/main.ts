@@ -12,6 +12,7 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     '@storybook/addon-react-native-web',
   ],
+  staticDirs: ['../src/assets'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
