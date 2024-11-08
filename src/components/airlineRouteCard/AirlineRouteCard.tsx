@@ -1,128 +1,139 @@
 import styled from '@emotion/native';
 import {Card} from '../card';
-import {AirlineRouteCardProps} from './types';
+import {AirlineRouteCardProps, DepartureAndArrivalInfo} from './types';
 import {Typography} from '../typography';
 import {Spacing} from '../spacing';
 import {Pill} from '../pill';
-import {useBreakpoints} from '../../hooks/useBreakpoints';
 import {Badge} from '../badge';
 import {useTheme} from '@emotion/react';
 import {View} from 'react-native';
 import {Icons} from '../icons';
+import {useCallback} from 'react';
 
-export const AirlineRouteCard = ({depatureInfo, arrivalInfo, baggageCount}: AirlineRouteCardProps) => {
-  const {xs} = useBreakpoints();
+export const AirlineRouteCard = ({departure, arrival, flyingTime, flyingDistance}: AirlineRouteCardProps) => {
   const {spacing} = useTheme();
+
+  const renderDataSection = useCallback(
+    ({airportInfo, timeData, baggageCount, gate}: DepartureAndArrivalInfo, isArrival?: boolean) => {
+      return (
+        <DataContainer>
+          <DataColumn align="flex-start">
+            <View>
+              <Typography variant="display" size="sm" weight="bold">
+                {airportInfo.city}
+              </Typography>
+              <Typography variant="text" size="md" weight="semibold" color="secondary">
+                {airportInfo.airportCode}
+              </Typography>
+              <Typography variant="text" size="xs" color="quaternary">
+                {airportInfo.airportName}
+              </Typography>
+              <Spacing height={spacing.xl} />
+            </View>
+            <Badge label={timeData.scheduledTime} size="sm" />
+          </DataColumn>
+          <DataColumn align="flex-end">
+            <View>
+              <Typography variant="display" size="sm" weight="bold" color={timeData.scheduleTimeColor ?? 'primary'}>
+                {timeData.scheduledTime}
+              </Typography>
+              {timeData.scheduledTime !== timeData.originalTime && (
+                <Typography
+                  variant="text"
+                  size="xs"
+                  weight="medium"
+                  color="quaternary"
+                  style={{
+                    textDecorationLine: 'line-through',
+                    textAlign: 'right',
+                  }}>
+                  {timeData.originalTime}
+                </Typography>
+              )}
+              <Spacing height={spacing.md} />
+              <PillWrapper>
+                <Pill label={timeData.timeStatusText} type={timeData.timeStatusColor} size="sm" />
+              </PillWrapper>
+            </View>
+            <PillWrapper>
+              {isArrival && <Badge label={`${baggageCount}`} type="filled" size="lg" icon={Icons.Baggage} />}
+              <Badge label={gate} type="filled" size="lg" icon={Icons.Gate} />
+            </PillWrapper>
+          </DataColumn>
+        </DataContainer>
+      );
+    },
+    [],
+  );
 
   return (
     <Card>
-      <Container isMobile={xs}>
-        <DetailColumn isMobile={xs}>
-          <DepatureAirporInfoColumn>
-            <Typography variant="display" size={xs ? 'sm' : 'md'} weight="bold">
-              {depatureInfo.airportInfo.airportCode}
-            </Typography>
-            <Typography variant="text" size="md" weight="medium" color="secondary">
-              {depatureInfo.airportInfo.city}
-            </Typography>
-            <Typography variant="text" size={xs ? 'sm' : 'xs'} weight="medium" color="tertiary">
-              {depatureInfo.airportInfo.airportName}
-            </Typography>
-          </DepatureAirporInfoColumn>
-          <Spacing height={spacing.lg} />
-          <DepatureTimeCoulumn isMobile={xs}>
-            <Typography variant="display" size={xs ? 'sm' : 'xs'} weight="bold" color={depatureInfo.timeColor}>
-              {depatureInfo.time}
-            </Typography>
-            <Spacing height={xs ? spacing.md : spacing.xs} />
-            <PillWrapper>
-              <Pill label={depatureInfo.status.text} type={depatureInfo.status.type} />
-            </PillWrapper>
-            <Spacing height={xs ? spacing.md : spacing.xs} />
-            <Typography variant="text" size="xs" weight="medium" color="quaternary">
-              Departs in 1h 30 min
-            </Typography>
-            <Spacing height={spacing.lg} />
-            <BadgeWrapper>
-              <Badge label={depatureInfo.gate} type="filled" size="lg" icon={Icons.Gate} />
-            </BadgeWrapper>
-          </DepatureTimeCoulumn>
-        </DetailColumn>
-        <DetailColumn isMobile={xs}>
-          <ArrivalAirporInfoColumn isMobile={xs}>
-            <Typography variant="display" size={xs ? 'sm' : 'md'} weight="bold">
-              {arrivalInfo.airportInfo.airportCode}
-            </Typography>
-            <Typography variant="text" size="md" weight="medium" color="secondary">
-              {arrivalInfo.airportInfo.city}
-            </Typography>
-            <Typography variant="text" size={xs ? 'sm' : 'xs'} weight="medium" color="tertiary">
-              {arrivalInfo.airportInfo.airportName}
-            </Typography>
-          </ArrivalAirporInfoColumn>
-          <Spacing height={spacing.lg} />
-          <ArrivalTimeCoulumn isMobile={xs}>
-            <Typography variant="display" size={xs ? 'sm' : 'xs'} weight="bold" color={arrivalInfo.timeColor}>
-              {arrivalInfo.time}
-            </Typography>
-            <Spacing height={xs ? spacing.md : spacing.xs} />
-            <PillWrapper>
-              <Pill label={arrivalInfo.status.text} type={arrivalInfo.status.type} />
-            </PillWrapper>
-            <Spacing height={xs ? spacing.md : spacing.xs} />
-            <Typography variant="text" size="xs" weight="medium" color="quaternary">
-              Arrive in 1h 30 min
-            </Typography>
-            <Spacing height={spacing.lg} />
-            <BadgeWrapper>
-              <Badge label={baggageCount} type="filled" size="lg" icon={Icons.Baggage} />
-              <Badge label={arrivalInfo.gate} type="filled" size="lg" icon={Icons.Gate} />
-            </BadgeWrapper>
-          </ArrivalTimeCoulumn>
-        </DetailColumn>
-      </Container>
+      {renderDataSection(departure)}
+      <Spacing height={spacing.xxl} />
+      <MiddleContainer>
+        <MiddleTextWrapper>
+          <Typography variant="text" size="xs" color="quaternary">
+            {flyingTime}
+          </Typography>
+          <Dot />
+          <Typography variant="text" size="xs" color="quaternary">
+            {flyingDistance}
+          </Typography>
+        </MiddleTextWrapper>
+        <DividerWrapper>
+          <VerticalDivider />
+        </DividerWrapper>
+      </MiddleContainer>
+      <Spacing height={spacing.xxl} />
+      {renderDataSection(arrival, true)}
     </Card>
   );
 };
 
-const Container = styled.View<{isMobile: boolean}>`
-  gap: ${({theme}) => `${theme.spacing.lg}px`};
-  flex-direction: ${({isMobile}) => (isMobile ? 'column' : 'row')};
+const DataContainer = styled.View`
+  flex-direction: row;
   justify-content: space-between;
+  height: 128px;
 `;
 
-const DetailColumn = styled.View<{isMobile: boolean}>`
-  flex-direction: ${({isMobile}) => (isMobile ? 'row' : 'column')};
-  justify-content: ${({isMobile}) => (isMobile ? 'space-between' : 'flex-start')};
-`;
-
-const DepatureAirporInfoColumn = styled.View`
-  flex-direction: column;
-  align-items: flex-start;
+const DataColumn = styled.View<{align: 'flex-start' | 'flex-end'}>`
+  align-items: ${({align}) => align};
   justify-content: space-between;
-`;
-
-const ArrivalAirporInfoColumn = styled.View<{isMobile: boolean}>`
-  flex-direction: column;
-  align-items: ${({isMobile}) => (isMobile ? 'flex-start' : 'flex-end')};
-  justify-content: space-between;
-`;
-
-const DepatureTimeCoulumn = styled.View<{isMobile: boolean}>`
-  flex-direction: column;
-  align-items: ${({isMobile}) => (isMobile ? 'flex-end' : 'flex-start')};
-`;
-
-const ArrivalTimeCoulumn = styled.View<{isMobile: boolean}>`
-  flex-direction: column;
-  align-items: flex-end;
 `;
 
 const PillWrapper = styled.View`
   flex-direction: row;
+  justify-content: flex-end;
+  gap: ${({theme}) => `${theme.spacing.xs}px`};
+`;
+const MiddleContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  gap: ${({theme}) => `${theme.spacing.xl}px`};
 `;
 
-const BadgeWrapper = styled.View`
+const MiddleTextWrapper = styled.View`
   flex-direction: row;
   gap: ${({theme}) => `${theme.spacing.xs}px`};
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Dot = styled.View`
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: ${({theme}) => theme.colors.text.quaternary};
+`;
+
+const DividerWrapper = styled.View`
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+`;
+
+const VerticalDivider = styled.View`
+  height: 1px;
+  background-color: ${({theme}) => theme.colors.devider.background};
+  width: 100%;
 `;

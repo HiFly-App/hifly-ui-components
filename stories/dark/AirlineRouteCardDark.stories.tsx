@@ -35,36 +35,40 @@ type Story = StoryObj<AirlineRouteCardProps>;
 
 export const DefaultAirlineRouteCard: Story = {
   args: {
-    depatureInfo: {
+    departure: {
       airportInfo: {
         airportCode: 'JFK',
         city: 'New York',
-        airportName: 'John F. Kennedy International Airport',
+        airportName: 'Kennedy Airport',
       },
-      time: '10:00',
-      timeColor: 'success',
-      status: {
-        text: 'On Time',
-        type: 'success',
+      timeData: {
+        originalTime: '10:00 AM',
+        scheduledTime: '10:10 AM',
+        scheduleTimeText: 'Departs in 1h 25m',
+        scheduleTimeColor: 'error',
+        timeStatusText: '10 min delayed',
+        timeStatusColor: 'error',
       },
       gate: 'A1',
     },
-    arrivalInfo: {
+    arrival: {
       airportInfo: {
         airportCode: 'LAX',
         city: 'Los Angeles',
-        airportName: 'Los Angeles International Airport',
+        airportName: 'Kennedy Airport',
       },
-      time: '12:00',
-      timeColor: 'error',
-      status: {
-        text: '10m Delay',
-        type: 'error',
+      timeData: {
+        originalTime: '18:00 PM',
+        scheduledTime: '18:00 PM',
+        scheduleTimeText: 'Arrives in 7h 50m',
+        scheduleTimeColor: 'primary',
+        timeStatusText: 'On time',
+        timeStatusColor: 'success',
       },
       gate: 'B1',
+      baggageCount: '2',
     },
-    baggageCount: '2',
-    curruntFlyingTime: '2h 30m',
-    curruntFlyingDistance: '2500 km',
+    flyingTime: '7h 50m',
+    flyingDistance: '4,000 km',
   },
 };

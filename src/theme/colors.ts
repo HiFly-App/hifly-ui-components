@@ -108,6 +108,9 @@ const colorsLightMode: ColorVariablesType = {
     success_background: baseColors.success50,
     success_text: baseColors.success700,
     success_border: baseColors.success200,
+    primary_background: baseColors.white,
+    primary_text: baseColors.gray700,
+    primary_border: baseColors.gray300,
   },
   text: {
     brand: baseColors.brand900,
@@ -166,6 +169,9 @@ const colorsDarkMode: ColorVariablesType = {
     success_background: baseColors.success950,
     success_text: baseColors.success300,
     success_border: baseColors.success800,
+    primary_background: baseColors.gray950,
+    primary_text: baseColors.text_secondary_dark,
+    primary_border: baseColors.devider_dark,
   },
   text: {
     brand: baseColors.text_brand_dark,

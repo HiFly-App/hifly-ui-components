@@ -4,7 +4,7 @@ import {BadgeProps} from './types';
 import {BadgeSizeDefinition, GetBadgeColorDefinition} from './BadgeDefinition';
 import {useTheme} from '@emotion/react';
 
-export const Badge = ({label, size = 'md', type = 'success', icon: Icon}: BadgeProps) => {
+export const Badge = ({label, size = 'md', type = 'primary', icon: Icon}: BadgeProps) => {
   const {colors} = useTheme();
   const {height, fontSize, padding, lineHeight} = BadgeSizeDefinition[size];
   const {background, textColor, border} = GetBadgeColorDefinition(colors)[type];

@@ -28,6 +28,9 @@ export type BadgeColors = {
   success_background: string;
   success_text: string;
   success_border: string;
+  primary_background: string;
+  primary_text: string;
+  primary_border: string;
 };
 
 export type TextColors = {

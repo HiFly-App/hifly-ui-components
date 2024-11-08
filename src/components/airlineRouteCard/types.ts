@@ -7,21 +7,25 @@ export type AirportInfo = {
   airportName: string;
 };
 
-export type DepatureAndArrivalInfoType = {
+export type TimeData = {
+  originalTime: string;
+  scheduledTime: string;
+  scheduleTimeText: string;
+  scheduleTimeColor: TypographyColorType;
+  timeStatusText: string;
+  timeStatusColor: PillType;
+};
+
+export type DepartureAndArrivalInfo = {
   airportInfo: AirportInfo;
-  time: string;
-  timeColor: TypographyColorType;
-  status: {
-    text: string;
-    type: PillType;
-  };
+  timeData: TimeData;
   gate: string;
+  baggageCount?: string;
 };
 
 export type AirlineRouteCardProps = {
-  depatureInfo: DepatureAndArrivalInfoType;
-  arrivalInfo: DepatureAndArrivalInfoType;
-  baggageCount: string;
-  curruntFlyingTime: string;
-  curruntFlyingDistance: string;
+  departure: DepartureAndArrivalInfo;
+  arrival: DepartureAndArrivalInfo;
+  flyingTime: string;
+  flyingDistance: string;
 };

@@ -2,8 +2,8 @@ import {ComponentType} from 'react';
 import {ViewProps as NativeViewProps} from 'react-native';
 import {SvgProps} from 'react-native-svg';
 
-export type BadgeSizes = 'sm' | 'md' | 'lg';
-export type BadgeType = 'filled' | 'success';
+export type BadgeSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type BadgeType = 'primary' | 'filled' | 'success';
 
 export type BadgeProps = {
   size?: BadgeSizes;
