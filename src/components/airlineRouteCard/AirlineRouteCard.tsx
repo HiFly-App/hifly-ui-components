@@ -19,7 +19,7 @@ export const AirlineRouteCard = ({departure, arrival, flyingTime, flyingDistance
         <DataContainer>
           <DataColumn align="flex-start">
             <View>
-              <Typography variant="display" size="sm" weight="bold">
+              <Typography variant="display" size="xs" weight="bold">
                 {airportInfo.city}
               </Typography>
               <Typography variant="text" size="md" weight="semibold" color="secondary">
@@ -34,7 +34,7 @@ export const AirlineRouteCard = ({departure, arrival, flyingTime, flyingDistance
           </DataColumn>
           <DataColumn align="flex-end">
             <View>
-              <Typography variant="display" size="sm" weight="bold" color={timeData.scheduleTimeColor ?? 'primary'}>
+              <Typography variant="display" size="xs" weight="bold" color={timeData.scheduleTimeColor ?? 'primary'}>
                 {timeData.scheduledTime}
               </Typography>
               {timeData.scheduledTime !== timeData.originalTime && (
