@@ -6,7 +6,7 @@ import React, {PropsWithChildren} from 'react';
 import {Text, View} from 'react-native';
 
 const meta: Meta<DashboardCardProps> = {
-  title: 'HiFly/Atomics/DashboardCard/Dark',
+  title: 'HiFly/Cards/DashboardCard/Dark',
   component: DashboardCard,
   args: {},
   parameters: {

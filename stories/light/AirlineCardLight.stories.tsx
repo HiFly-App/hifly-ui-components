@@ -8,7 +8,7 @@ import {Text, View} from 'react-native';
 import {useBreakpoints} from '../../src/hooks/useBreakpoints';
 
 const meta: Meta<AirlineCardProps> = {
-  title: 'HiFly/Atomics/AirlineCard/Light',
+  title: 'HiFly/Cards/AirlineCard/Light',
   component: AirlineCard,
   parameters: {
     docs: {iframeHeight: 600, previewSource: 'open'},

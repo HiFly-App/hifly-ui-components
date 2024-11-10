@@ -6,7 +6,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 
 const meta: Meta<AirlineRouteCardProps> = {
-  title: 'HiFly/Atomics/AirlineRouteCard/Dark',
+  title: 'HiFly/Cards/AirlineRouteCard/Dark',
   component: AirlineRouteCard,
   parameters: {
     docs: {iframeHeight: 600, previewSource: 'open'},
