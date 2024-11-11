@@ -3,12 +3,16 @@ export type ActionItem = {
   onPress: () => void;
 };
 
+export type AirportInfoDetailsItem = {
+  title: string;
+  value: string | number;
+};
+
 export type AirportInfoCardProps = {
   name: string;
   description: string;
   serviceAirline: string;
   imageBase64: string; // Added property for base64 info
-  code: string;
-  openYear: string;
+  details: AirportInfoDetailsItem[];
   actionItems: ActionItem[];
 };

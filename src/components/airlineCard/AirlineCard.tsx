@@ -8,7 +8,16 @@ import {Icons} from '../icons';
 import {AirbnbRating} from 'react-native-ratings';
 import {Button} from '../button';
 
-export const AirlineCard = ({name, subName, country, rating, ratingCount, atc, iata, icao}: AirlineCardProps) => {
+export const AirlineCard = ({
+  name,
+  subName,
+  country,
+  rating,
+  ratingCountText,
+  details,
+  actions,
+  imageBase64,
+}: AirlineCardProps) => {
   const {spacing} = useTheme();
   return (
     <Card>
@@ -30,13 +39,13 @@ export const AirlineCard = ({name, subName, country, rating, ratingCount, atc, i
             </CityWrapper>
           </TopLeftWrapper>
           <ImageWrapper>
-            <Icons.TempLuthansa width="56px" height="56px" />
+            <StyledImage source={{uri: imageBase64}} />
           </ImageWrapper>
         </TopWrapper>
         <RatingWrapper>
           <AirbnbRating
             showRating={false}
-            defaultRating={3}
+            defaultRating={rating}
             size={16}
             starContainerStyle={{margin: 10, height: 16}}
             isDisabled
@@ -44,39 +53,25 @@ export const AirlineCard = ({name, subName, country, rating, ratingCount, atc, i
           />
           <Spacing height={spacing.xs} />
           <Typography variant="text" color="secondary" size="xs" weight="medium">
-            20+ Reviews
+            {ratingCountText}
           </Typography>
         </RatingWrapper>
         <DetailWrapper>
-          <DetailItem>
-            <Typography variant="text" color="tertiary" size="xs">
-              ATC Callsign
-            </Typography>
-            <Typography variant="text" color="primary" size="sm" weight="semibold">
-              {atc}
-            </Typography>
-          </DetailItem>
-          <DetailItem>
-            <Typography variant="text" color="tertiary" size="xs">
-              IATA
-            </Typography>
-            <Typography variant="text" color="primary" size="sm" weight="semibold">
-              {iata}
-            </Typography>
-          </DetailItem>
-          <DetailItem>
-            <Typography variant="text" color="tertiary" size="xs">
-              ICAO
-            </Typography>
-            <Typography variant="text" color="primary" size="sm" weight="semibold">
-              {icao}
-            </Typography>
-          </DetailItem>
+          {details.map((item, index) => (
+            <DetailItem key={index}>
+              <Typography variant="text" color="tertiary" size="xs">
+                {item.title}
+              </Typography>
+              <Typography variant="text" color="primary" size="sm" weight="semibold">
+                {item.value}
+              </Typography>
+            </DetailItem>
+          ))}
         </DetailWrapper>
         <ActionWrapper>
-          <Button variant="secondary" size="sm" label="Phone" />
-          <Button variant="secondary" size="sm" label="Website" />
-          <Button variant="secondary" size="sm" label="Social Media" />
+          {actions.map((action, index) => (
+            <Button variant="secondary" size="sm" label={action.label} key={index} onPress={action.onPress} />
+          ))}
         </ActionWrapper>
       </Container>
     </Card>
@@ -111,7 +106,15 @@ const Dot = styled.View`
 `;
 
 const ImageWrapper = styled.View`
-  justify-content: center;
+  height: 56px;
+  width: auto;
+  aspect-ratio: 1;
+`;
+
+const StyledImage = styled.Image`
+  height: 100%;
+  width: 100%;
+  resize-mode: contain;
 `;
 
 const RatingWrapper = styled.View`

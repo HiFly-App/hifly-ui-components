@@ -4,18 +4,8 @@ import {Spacing} from '../spacing';
 import {Typography} from '../typography';
 import {AircraftCardProps} from './types';
 import styled from '@emotion/native';
-import {Image} from 'react-native';
 
-export const AircraftCard = ({
-  name,
-  ageText,
-  seatCountText,
-  imageBase64,
-  registrationNumber,
-  engineCount,
-  firstFlightYear,
-  amenities,
-}: AircraftCardProps) => {
+export const AircraftCard = ({name, ageText, seatCountText, imageBase64, details, amenities}: AircraftCardProps) => {
   const {spacing} = useTheme();
   return (
     <Card>
@@ -38,30 +28,16 @@ export const AircraftCard = ({
       </ImageWrapper>
       <Spacing height={spacing.xxxl} />
       <DetailWrapper>
-        <DetailItem>
-          <Typography variant="text" color="tertiary" size="xs">
-            Registration Number
-          </Typography>
-          <Typography variant="text" color="primary" size="sm" weight="semibold">
-            {registrationNumber}
-          </Typography>
-        </DetailItem>
-        <DetailItem>
-          <Typography variant="text" color="tertiary" size="xs">
-            Engine Count
-          </Typography>
-          <Typography variant="text" color="primary" size="sm" weight="semibold">
-            {engineCount}
-          </Typography>
-        </DetailItem>
-        <DetailItem>
-          <Typography variant="text" color="tertiary" size="xs">
-            First Flight
-          </Typography>
-          <Typography variant="text" color="primary" size="sm" weight="semibold">
-            {firstFlightYear}
-          </Typography>
-        </DetailItem>
+        {details.map((detail, index) => (
+          <DetailItem key={index}>
+            <Typography variant="text" color="tertiary" size="xs">
+              {detail.title}
+            </Typography>
+            <Typography variant="text" color="primary" size="sm" weight="semibold">
+              {detail.value}
+            </Typography>
+          </DetailItem>
+        ))}
       </DetailWrapper>
       <Spacing height={spacing.xxxl} />
       <AmenityWrapper>

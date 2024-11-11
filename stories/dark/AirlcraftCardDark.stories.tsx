@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react';
 import {getDefaultTheme, AircraftCard, AircraftCardProps, Icons} from '../../src';
 import {ThemeProvider} from '@emotion/react';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
 import {useBreakpoints} from '../../src/hooks/useBreakpoints';
 
@@ -42,9 +42,11 @@ export const DefaultAircraftCard: Story = {
     name: 'Airbus A350 XWB',
     ageText: '2 years old',
     seatCountText: 'Up to 300 seats',
-    registrationNumber: 'D-AIXA',
-    engineCount: 2,
-    firstFlightYear: 2024,
+    details: [
+      {title: 'Manufacturer', value: 'Airbus'},
+      {title: 'Range', value: '15,000 km'},
+      {title: 'Cruise speed', value: '900 km/h'},
+    ],
     amenities: [
       {icon: <Icons.Meal width={20} height={20} color="#F5F5F6" />, text: 'Meal included'},
       {icon: <Icons.Usb width={20} height={20} color="#F5F5F6" />, text: 'USB port and power outlet'},

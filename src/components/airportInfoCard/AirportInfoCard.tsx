@@ -11,8 +11,7 @@ export const AirportInfoCard = ({
   description,
   serviceAirline,
   imageBase64,
-  code,
-  openYear,
+  details,
   actionItems,
 }: AirportInfoCardProps) => {
   const {spacing} = useTheme();
@@ -37,30 +36,16 @@ export const AirportInfoCard = ({
       </ImageWrapper>
       <Spacing height={spacing.xl} />
       <DetailWrapper>
-        <DetailItem>
-          <Typography variant="text" color="tertiary" size="xs">
-            Code
-          </Typography>
-          <Typography variant="text" color="primary" size="sm" weight="semibold">
-            {code}
-          </Typography>
-        </DetailItem>
-        <DetailItem>
-          <Typography variant="text" color="tertiary" size="xs">
-            Service Airline
-          </Typography>
-          <Typography variant="text" color="primary" size="sm" weight="semibold">
-            {serviceAirline}
-          </Typography>
-        </DetailItem>
-        <DetailItem>
-          <Typography variant="text" color="tertiary" size="xs">
-            Opened
-          </Typography>
-          <Typography variant="text" color="primary" size="sm" weight="semibold">
-            {openYear}
-          </Typography>
-        </DetailItem>
+        {details.map((detail, index) => (
+          <DetailItem key={`detail-${index}`}>
+            <Typography variant="text" color="tertiary" size="xs">
+              {detail.title}
+            </Typography>
+            <Typography variant="text" color="primary" size="sm" weight="semibold">
+              {detail.value}
+            </Typography>
+          </DetailItem>
+        ))}
       </DetailWrapper>
       <Spacing height={spacing.xxxl} />
       <ActionWrapper>

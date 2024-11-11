@@ -42,9 +42,11 @@ export const DefaultAircraftCard: Story = {
     name: 'Airbus A350 XWB',
     ageText: '2 years old',
     seatCountText: 'Up to 300 seats',
-    registrationNumber: 'D-AIXA',
-    engineCount: 2,
-    firstFlightYear: 2024,
+    details: [
+      {title: 'Manufacturer', value: 'Airbus'},
+      {title: 'Range', value: '15,000 km'},
+      {title: 'Cruise speed', value: '900 km/h'},
+    ],
     amenities: [
       {icon: <Icons.Meal width={20} height={20} color={'#101828'} />, text: 'Meal included'},
       {icon: <Icons.Usb width={20} height={20} color={'#101828'} />, text: 'USB port and power outlet'},

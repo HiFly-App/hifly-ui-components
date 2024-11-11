@@ -42,20 +42,32 @@ export const DefaultAirportInfoCard: Story = {
     name: 'Munich International Airport',
     description: 'International airport in Germany',
     serviceAirline: 'Lufthansa',
-    code: 'MUC',
-    openYear: '1992',
+    details: [
+      {
+        title: 'Code',
+        value: 'MUC',
+      },
+      {
+        title: 'Service Airline',
+        value: 'Lufthansa',
+      },
+      {
+        title: 'Opened',
+        value: '32 years ago',
+      },
+    ],
     actionItems: [
       {
         text: 'Phone',
-        onPress: () => console.log('More info'),
+        onPress: () => console.log('Phone info'),
       },
       {
         text: 'Website',
-        onPress: () => console.log('More info'),
+        onPress: () => console.log('Website info'),
       },
       {
         text: 'Social Media',
-        onPress: () => console.log('More info'),
+        onPress: () => console.log('Social info'),
       },
     ],
     imageBase64:

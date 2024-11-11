@@ -1,9 +1,13 @@
-import {ComponentType, ReactElement} from 'react';
-import {SvgProps} from 'react-native-svg';
+import {ReactElement} from 'react';
 
 export type AircraftAmenity = {
   icon: ReactElement;
   text: string;
+};
+
+export type AircraftDetailsItem = {
+  title: string;
+  value: string | number;
 };
 
 export type AircraftCardProps = {
@@ -11,8 +15,6 @@ export type AircraftCardProps = {
   ageText: string;
   seatCountText: string;
   imageBase64: string;
-  registrationNumber: string;
-  engineCount: number;
-  firstFlightYear: number;
   amenities: AircraftAmenity[];
+  details: AircraftDetailsItem[];
 };

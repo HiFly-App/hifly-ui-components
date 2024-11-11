@@ -6,9 +6,6 @@ import Meal from './meal.svg';
 import Wifi from './wifi.svg';
 import Usb from './usb.svg';
 
-// This is an example of an icon that is not used in the app
-import TempLuthansa from './lufthansa.svg';
-
 const Icons = {
   CabinCareAlt,
   Baggage,
@@ -17,7 +14,6 @@ const Icons = {
   Meal,
   Wifi,
   Usb,
-  TempLuthansa,
 };
 
 export {Icons};
