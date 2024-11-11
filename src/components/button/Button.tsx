@@ -4,7 +4,15 @@ import {ButtonProps, ButtonVariants} from './types';
 import {useTheme} from '@emotion/react';
 import {GetButtonColorDefinition, ButtonSizeDefinition} from './ButtonDefinition';
 
-export const Button = ({label, variant, size = 'sm', state = 'default', overideStyles, ...rest}: ButtonProps) => {
+export const Button = ({
+  label,
+  variant,
+  size = 'sm',
+  state = 'default',
+  overideStyles,
+  fullWidth = false,
+  ...rest
+}: ButtonProps) => {
   const {colors} = useTheme();
   const {height, fontSize, padding} = ButtonSizeDefinition[size];
 
@@ -16,6 +24,7 @@ export const Button = ({label, variant, size = 'sm', state = 'default', overideS
       padding={padding}
       backgroundColor={overideStyles?.backgroundColor ?? backgroundColor}
       border={overideStyles?.border ?? border}
+      fullWidth={fullWidth}
       {...rest}>
       <ButtonText fontSize={fontSize} color={overideStyles?.color ?? color}>
         {label}
@@ -29,9 +38,10 @@ const StyledButton = styled.Pressable<{
   padding: string;
   backgroundColor: string;
   border: string;
+  fullWidth: boolean;
 }>`
   display: flex;
-  align-self: flex-start;
+  align-self: ${({fullWidth}) => (fullWidth ? 'stretch' : 'flex-start')};
   border-radius: 8px;
   background-color: ${({backgroundColor}) => backgroundColor};
   padding: ${({padding}) => padding};

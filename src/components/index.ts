@@ -10,3 +10,5 @@ export * from './airlineRouteCard';
 export * from './airlineCard';
 export * from './aircraftCard';
 export * from './airportInfoCard';
+export * from './landingCard';
+export * from './ratingEntryCard';

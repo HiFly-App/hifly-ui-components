@@ -14,6 +14,7 @@ export type ButtonProps = {
     color?: string;
     border?: string;
   };
+  fullWidth?: boolean;
 } & NativePressableProps;
 
 export type ButtonSizeDefinitionType = {
