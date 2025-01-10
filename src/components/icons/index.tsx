@@ -5,6 +5,7 @@ import Entertainment from './entertainment.svg';
 import Meal from './meal.svg';
 import Wifi from './wifi.svg';
 import Usb from './usb.svg';
+import GateIcon from './GateIcon';
 
 const Icons = {
   CabinCareAlt,
@@ -14,6 +15,7 @@ const Icons = {
   Meal,
   Wifi,
   Usb,
+  GateIcon,
 };
 
 export {Icons};

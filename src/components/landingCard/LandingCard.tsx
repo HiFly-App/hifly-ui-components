@@ -3,10 +3,10 @@ import {Card} from '../card';
 import {LandingCardProps} from './types';
 import {Typography} from '../typography';
 import {Badge} from '../badge';
-import {Icons} from '../icons';
 import {Spacing} from '../spacing';
 import {useTheme} from '@emotion/react';
 import {Pill} from '../pill';
+import GateIcon from '../icons/GateIcon';
 
 export const LandingCard = ({title, gate, timeText, timePillProps}: LandingCardProps) => {
   const {spacing} = useTheme();
@@ -16,7 +16,7 @@ export const LandingCard = ({title, gate, timeText, timePillProps}: LandingCardP
         <Typography variant="text" color="tertiary" size="sm" weight="medium">
           {title}
         </Typography>
-        <Badge label={gate} type="filled" icon={Icons.Gate} size="lg" />
+        <Badge label={gate} type="filled" icon={GateIcon} size="lg" />
       </TopWrapper>
       <Spacing height={spacing.md} />
       <BottomWrapper>
