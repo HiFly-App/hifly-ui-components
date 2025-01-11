@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, {SvgProps, Path} from 'react-native-svg';
 const GateIcon = (props: SvgProps) => (
-  <Svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+  <Svg fill="none" viewBox="0 0 24 24" {...props}>
     <Path
       stroke="currentStroke"
       strokeLinecap="round"
