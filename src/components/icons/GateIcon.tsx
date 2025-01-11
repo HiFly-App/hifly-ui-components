@@ -3,7 +3,7 @@ import Svg, {SvgProps, Path} from 'react-native-svg';
 const GateIcon = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 24 24" {...props}>
     <Path
-      stroke="currentStroke"
+      stroke={props.color || 'black'} // Use default or dynamic color
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
@@ -11,4 +11,5 @@ const GateIcon = (props: SvgProps) => (
     />
   </Svg>
 );
+
 export default GateIcon;
