@@ -7,8 +7,9 @@ import {Pill} from '../pill';
 import {Badge} from '../badge';
 import {useTheme} from '@emotion/react';
 import {View} from 'react-native';
-import {Icons} from '../icons';
 import {useCallback} from 'react';
+import GateIcon from '../icons/GateIcon';
+import BaggageIcon from '../icons/BaggageIcon';
 
 export const AirlineRouteCard = ({departure, arrival, flyingTime, flyingDistance}: AirlineRouteCardProps) => {
   const {spacing} = useTheme();
@@ -56,8 +57,8 @@ export const AirlineRouteCard = ({departure, arrival, flyingTime, flyingDistance
               </PillWrapper>
             </View>
             <PillWrapper>
-              {isArrival && <Badge label={`${baggageCount}`} type="filled" size="lg" icon={Icons.Baggage} />}
-              <Badge label={gate} type="filled" size="lg" icon={Icons.Gate} />
+              {isArrival && <Badge label={`${baggageCount}`} type="filled" size="lg" icon={BaggageIcon} />}
+              <Badge label={gate} type="filled" size="lg" icon={GateIcon} />
             </PillWrapper>
           </DataColumn>
         </DataContainer>
